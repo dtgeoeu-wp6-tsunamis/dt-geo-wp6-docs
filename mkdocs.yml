@@ -1,6 +1,6 @@
 # Project information
 site_name: Template material for MkDocs
-site_url: https://sunnivin.github.io/mkdocs-github-template/
+site_url: https://dtgeoeu-wp6-tsunamis.github.io/dt-geo-wp6-docs/
 site_author: Sunniva Indrehus
 site_description: >-
   Example of how to create a professional static site in
@@ -11,8 +11,8 @@ site_description: >-
 repo_name: dtgeoeu-wp6-tsunamis/dt-geo-wp6-docs
 repo_url: https://github.com/dtgeoeu-wp6-tsunamis/dt-geo-wp6-docs
 theme:
-  logo: images/logo_example.png
-  favicon: images/logo_example.png
+  logo: images/logo-dt-geo-wp6.png
+  favicon: images/logo-dt-geo-wp6.png
   name: material
   custom_dir: overrides
   features:
