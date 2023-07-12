@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "template-mkdocs"
+version = "0.1.0"
+description = "Mkdocs template"
+authors = ["Sunniva Indrehus <sunniva.indrehus@gmail.com>"]
+readme = "README.md"
+packages = [{include = "docs"}]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+mkdocs-material = "^9.1.15"
+mkdocs-awesome-pages-plugin = "^2.9.1"
+python-markdown-math = "^0.8"
+pygments = "^2.15.1"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

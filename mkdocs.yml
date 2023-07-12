@@ -1,0 +1,46 @@
+# Project information
+site_name: Template material for MkDocs
+site_url: https://sunnivin.github.io/mkdocs-github-template/
+site_author: Sunniva Indrehus
+site_description: >-
+  Example of how to create a professional static site in
+  minutes – searchable, customizable, in 60+ languages, for all devices
+
+
+# Repository
+repo_name: sunnivin/mkdocs-github-template
+repo_url: https://github.com/sunnivin/mkdocs-github-template
+theme:
+  logo: images/logo_example.png
+  favicon: images/logo_example.png
+  name: material
+  custom_dir: overrides
+  features:
+    - search.suggest    # display the likeliest completion for the last word
+    - search.highlight  # highlight all occurrences
+    - search.share      # show a share button
+    - navigation.footer
+    - navigation.indexes
+    - content.code.copy
+    - content.code.annotate
+    - announce.dismiss
+    - header.autohide
+extra_css:
+  - stylesheets/extra.css
+plugins:
+    - search
+    - awesome-pages
+markdown_extensions:
+  - footnotes
+  - admonition
+  - mdx_math
+  - pymdownx.highlight
+  - pymdownx.details
+  - pymdownx.tabbed:
+      alternate_style: true 
+  - attr_list
+  - md_in_html
+  - pymdownx.superfences
+  - pymdownx.emoji:
+      emoji_index: !!python/name:materialx.emoji.twemoji 
+      emoji_generator: !!python/name:materialx.emoji.to_svg

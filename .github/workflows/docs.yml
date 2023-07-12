@@ -1,0 +1,38 @@
+name: Docs
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+
+jobs:
+  docs:
+    runs-on: ubuntu-latest
+
+    container: python:3.11-bullseye
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Read Python version
+        id: read-python-version
+        run: echo "::set-output name=python-version::$(cat .python_version)"
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: ${{ steps.read-python-version.outputs.python-version }}
+
+      - name: Install poetry
+        run: |
+          pip install poetry==1.5.1
+
+      - name: Install project dependencies
+        run: |
+          poetry install
+
+      - name: Build and deploy docs
+        run: |
+          git config --global --add safe.directory /__w/mkdocs-github-template/mkdocs-github-template
+          poetry run mkdocs gh-deploy --force
