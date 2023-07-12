@@ -8,8 +8,8 @@ site_description: >-
 
 
 # Repository
-repo_name: sunnivin/mkdocs-github-template
-repo_url: https://github.com/sunnivin/mkdocs-github-template
+repo_name: dtgeoeu-wp6-tsunamis/dt-geo-wp6-docs
+repo_url: https://github.com/dtgeoeu-wp6-tsunamis/dt-geo-wp6-docs
 theme:
   logo: images/logo_example.png
   favicon: images/logo_example.png

@@ -34,5 +34,5 @@ jobs:
 
       - name: Build and deploy docs
         run: |
-          git config --global --add safe.directory /__w/mkdocs-github-template/mkdocs-github-template
+          git config --global --add safe.directory /__w/dt-geo-wp6-docs/dt-geo-wp6-docs
           poetry run mkdocs gh-deploy --force
