@@ -13,6 +13,9 @@ repo_url: https://github.com/dtgeoeu-wp6-tsunamis/dt-geo-wp6-docs
 theme:
   logo: images/logo-dt-geo-wp6.png
   favicon: images/logo-dt-geo-wp6.png
+  palette:
+      primary: blue
+      accent: deep orange
   name: material
   custom_dir: overrides
   features:
