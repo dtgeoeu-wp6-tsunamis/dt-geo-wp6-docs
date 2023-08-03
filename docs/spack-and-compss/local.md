@@ -1,4 +1,4 @@
-# **Run a pyCOMPSs job with Spack+COMPSs on your local machine**
+# **Run a pyCOMPSs job in a Spack environment on your local machine**
 Follow these instructions if you want to create a Spack environment with COMPSs on your local machine.
 
 ## **1. Download Spack and create an environment**

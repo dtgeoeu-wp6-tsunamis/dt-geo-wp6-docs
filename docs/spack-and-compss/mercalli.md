@@ -1,4 +1,4 @@
-# **Run a pyCOMPSs job on Mercalli with Spack+COMPSs**
+# **Run a pyCOMPSs job in a Spack environment on Mercalli**
 Follow these instructions if you want to create a Spack environment with COMPSs on Mercalli.
 
 ???+ warning

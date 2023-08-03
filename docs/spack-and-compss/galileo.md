@@ -1,4 +1,4 @@
-# **Run a pyCOMPSs job on Galileo with Spack+COMPSs**
+# **Run a pyCOMPSs job in a Spack environment on Galileo**
 Follow these instructions if you want to create a Spack environment with COMPSs on Galileo100.
 
 ## **1. Create the spack environment**
