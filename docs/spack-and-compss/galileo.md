@@ -1,5 +1,10 @@
 # **Run a pyCOMPSs job in a Spack environment on Galileo**
-Follow these instructions if you want to create a Spack environment with COMPSs on Galileo100.
+These instructions describe how to set up a Spack environment that includes COMPSs and py-pip, and how to run a pyCOMPSs script on Galileo100.
+
+???+ info
+    To know more about Spack and COMPSs:    
+    [Spack documentation](https://spack.readthedocs.io/en/latest/)   
+    [COMPSs documentation](https://compss-doc.readthedocs.io/en/stable/)
 
 ## **1. Create the spack environment**
 1. Load the spack module:
@@ -31,10 +36,12 @@ spack repo add /<FULLPATH-TO-REPOSITORY-ROOT>/spack-compss/spack-dt-geo/var/spac
 spack concretize
 spack -d install
 ```
-Now you should have an environment with compss and py-pip installed.    
+Now you should have an environment with compss and py-pip installed. If something fails, check our [troubleshooting guide](troubleshooting.md).    
 
 You can do `spack find` to see which packages are now installed in the environment.
-To see if the installation of compss worked you can do `runcompss --version`, but the first time you do this you might need to deactivate the environment (`spack env deactivate`) and activate it again. If the command runcompss is not known, then something went wrong with the installation. 
+To see if the installation of compss worked you can do `runcompss --version`, but the first time you do this you might need to deactivate the environment (`spack env deactivate`) and activate it again. If the command runcompss is not known, then something went wrong with the installation.   
+
+Once you have this basic environment set up, you can add and install more packages with `spack add packagename`, then repeating step 5.
 
 ???+ info
 

@@ -5,8 +5,7 @@
 fill in more stuff here
 
 ## Useful spack commands
-Full Spack documentation is [here](https://spack.readthedocs.io/en/latest/)   
-Below is a short list of some useful commands
+Below is a short list of some useful commands. For the complete list of Spack commands check this [link](https://spack.readthedocs.io/en/latest/command_index.html)      
 
 | Command                        |      Comment      |
 |--------------------------------|---------------------------------------|

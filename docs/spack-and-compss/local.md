@@ -1,7 +1,13 @@
 # **Run a pyCOMPSs job in a Spack environment on your local machine**
-Follow these instructions if you want to create a Spack environment with COMPSs on your local machine.
+These instructions describe how to set up a Spack environment that includes COMPSs and py-pip, and how to run a pyCOMPSs script on your local machine.
+
+???+ info
+    To know more about Spack and COMPSs:    
+    [Spack documentation](https://spack.readthedocs.io/en/latest/)   
+    [COMPSs documentation](https://compss-doc.readthedocs.io/en/stable/)
 
 ## **1. Download Spack and create an environment**
+Before installing Spack, check the [system prerequisites](https://spack.readthedocs.io/en/latest/getting_started.html) that are needed to be present on your machine. Most of them are basic things that you likely already have (e.g., python>3.6, C/C++ compilers, make, tar, git,...), but still worth checking the full list.
 
 1. Choose the directory on your machine where you want to download Spack (<FULLPATH-TO-SPACK-ROOT\>), then run the following commands: 
 ```
@@ -42,10 +48,12 @@ Note that the -p flag is simply to visualize that the environment is active.
 spack concretize
 spack -d install
 ```
-Now you should have an environment with compss and py-pip installed.    
+Now you should have an environment with compss and py-pip installed. If something fails, check our [troubleshooting guide](troubleshooting.md).    
 
 You can do `spack find` to see which packages are now installed in the environment.
-To see if the installation of compss worked you can do `runcompss --version`, but the first time you do this you might need to deactivate the environment (`spack env deactivate`) and activate it again. If the command runcompss is not known, then something went wrong with the installation. 
+To see if the installation of compss worked you can do `runcompss --version`, but the first time you do this you might need to deactivate the environment (`spack env deactivate`) and activate it again. If the command runcompss is not known, then something went wrong with the installation.   
+
+Once you have this basic environment set up, you can add and install more packages with `spack add packagename`, then repeating step 5.
 
 ???+ info
 
@@ -68,7 +76,7 @@ export PYTHONPATH=$PYTHONPATH:/mycode:/mycode/py
 ```
 ## **3. Configure ssh passwordless access to your machine**
 Before running a pyCOMPSs script, you need to make sure that you can access your own local machine with ssh without password.   
-Full documentation about how COMPSs uses ssh and how to set it up can be found [here](https://compss-doc.readthedocs.io/en/stable/Sections/01_Installation/05_Additional_configuration.html?highlight=service%20ssh#configure-ssh-passwordless)   
+Full documentation about how COMPSs uses ssh and how to set it up can be found [here](https://compss-doc.readthedocs.io/en/stable/Sections/01_Installation/05_Additional_configuration.html?highlight=service%20ssh#configure-ssh-passwordless).   
 
 1. Check if this command works:
 ```
@@ -96,7 +104,7 @@ If it works, then you go to the next section (4. Running a pyCOMPSs script) .
  ```
  service ssh start
  ```
- 5. Check that you can access you own machine without password:
+ 5. Check that you can access your own machine without password:
  ```
  ssh localhost
  ``` 
