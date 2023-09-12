@@ -1,10 +1,9 @@
 # Project information
-site_name: Template material for MkDocs
+site_name: DT-GEO WP6 Tsunamis documentation
 site_url: https://dtgeoeu-wp6-tsunamis.github.io/dt-geo-wp6-docs/
 site_author: Sunniva Indrehus
 site_description: >-
-  Example of how to create a professional static site in
-  minutes – searchable, customizable, in 60+ languages, for all devices
+  Instructions for the tools and codes used by DT-GEO WP6 Tsunamis
 
 
 # Repository
