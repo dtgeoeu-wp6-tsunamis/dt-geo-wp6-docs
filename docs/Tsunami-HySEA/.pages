@@ -1,0 +1,4 @@
+nav:
+- HySEA on Leonardo: leonardo.md
+- HySEA docker image: docker.md
+- Troubleshooting : troubleshooting.md

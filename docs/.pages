@@ -1,4 +1,5 @@
 nav:
   - Main page: index.md
   - Spack and COMPSs: spack-and-compss
+  - Tsunami HySEA: Tsunami-HySEA
   - Episode name: episode
