@@ -11,6 +11,7 @@ These instructions describe how to set up a Spack environment that includes COMP
 ```
 module load spack
 ```   
+This will load the version of Spack 0.17.1. The instructions below and the file spack.yaml are tested on this version of spack. Other versions of spack might work too, but the syntax in the spack.yaml file might be different.    
 
 2. Clone our repository. The `git submodule` command is to pull a secondary git repo within our main one.   
 ```
@@ -21,7 +22,7 @@ git submodule update --init --recursive
 
 3. Create and activate the Spack environment .   
 ```
-cd spackenv
+cd galileo/spackenv
 spack env create -d .
 spack env activate -p .
 ```
@@ -67,8 +68,8 @@ export PYTHONPATH=$PYTHONPATH:/mycode:/mycode/py
 ## **3. Configure COMPSs for Galileo**
 Now we need to tell COMPSs which submission scripts to use that are specific for Galileo. This is defined by the two files g100.cfg and slurm.cfg, which we need to copy in the COMPSs folders of our Spack environment:
 ```
-cp galileo/g100.cfg /<FULLPATH-TO-REPOSITORY-ROOT>/spack-compss/spackenv/.spack-env/view/compss/Runtime/scripts/queues/supercomputers/default.cfg   
-cp galileo/slurm.cfg /<FULLPATH-TO-REPOSITORY-ROOT>/spack-compss/spackenv/.spack-env/view/compss/Runtime/scripts/queues/queue_systems/
+cp galileo/g100.cfg /<FULLPATH-TO-REPOSITORY-ROOT>/spack-compss/galileo/spackenv/.spack-env/view/compss/Runtime/scripts/queues/supercomputers/default.cfg   
+cp galileo/slurm.cfg /<FULLPATH-TO-REPOSITORY-ROOT>/spack-compss/galileo/spackenv/.spack-env/view/compss/Runtime/scripts/queues/queue_systems/
 ```
 
 ## **4. Submit a job on Galileo with enqueue_compss**
@@ -81,7 +82,12 @@ cp galileo/run_compss_galileo.sh /<PATH-TO-DIR-FOR-LAUNCHING-JOB>/run_compss.sh
 ```   
 2. Open the file `run_compss.sh` and change the paths and name of the script to run.
 
-3. Submit the job with the **spack environment active**:
+3. Activate the spack environment (if not activate yet) and load the modules needed to run the code:
+```
+spack env activate -p /<FULLPATH-TO-REPOSITORY-ROOT>/spack-compss/galileo/spackenv/
+spack load compss
+```
+4. Submit the job with the **spack environment active**:
 ```
 cd /<PATH-TO-DIR-FOR-LAUNCHING-JOB>/
 ./run_compss.sh
