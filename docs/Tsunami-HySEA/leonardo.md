@@ -1,4 +1,4 @@
-# **Tsunami HySEA on Leonardo**
+# **Running Tsunami HySEA on Leonardo**
 These instructions describe how to set up a Spack environment on Leonardo to run Tsunami HySEA.    
 A compiled version of T-HySEA 3.9.0MC is available on Leonardo in the shared directory `/leonardo_work/DTGEO_T1_2/T-HySEA-leonardo`.    
 
