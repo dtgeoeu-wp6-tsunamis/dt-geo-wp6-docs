@@ -15,14 +15,14 @@ These instructions describe how to set up a Spack environment that includes COMP
 ```
 cd /<FULLPATH-TO-SPACK-ROOT>
 git clone --depth=100 --branch=releases/v0.17 https://github.com/spack/spack.git
-. /<FULLPATH-TO-SPACK-ROOT>/spack/setup-env.sh
+. /<FULLPATH-TO-SPACK-ROOT>/spack/share/spack/setup-env.sh
 ```   
 Note that I use version 17.0 of Spack because it is the same version used on Galileo, but this can change. If you download a different version of Spack, some changes might be needed in the COMPSs and .yaml files.   
 
     ???+ tip
         To avoid running the same command every time you open a new terminal, you might want to add this line to your ~/.bashrc file:
         ```
-        . /<PATH-TO-SPACK-ROOT>/spack/share/spack/setup-env.sh
+        . /<FULLPATH-TO-SPACK-ROOT>/spack/share/spack/setup-env.sh
         ```
 
 2. Clone our repository. The `git submodule` command is to pull a secondary git repo within our main one.

@@ -20,6 +20,40 @@ cat: /scratch_local/tmp.VJR55zlrin.err: No such file or directory
 Error submiting script to queue system`   
 This is related to COMPSs using the wrong commands to submit a job to the queue in Galielo. Make sure you have copied the right configuration files specific for Galileo in the spack environment COMPSs folder, as described [here](galileo.md).    
 
+### **Installation of Spack environment fails - Problem with compilers**
+If the installation of a spack environment fails, it can be because spack is using a version of the C compilers that have only gcc, but not g++. The error message would read something like *"Checking whether the C++ compiler supports templates ... configure: error: no"*.   
+Open the spack.yaml file of the environment where the installation failed. There should be a section that Spack created called "compilers". Check what version of gcc is listed. If there is no path specified for some of the compilers (e.g., cxx), then you need to use a different version of gcc.
+
+In this case you can force spack to use the version of the compiler that has both gcc and g++. You can check what compilers you have available with the command
+```
+spack compiler find
+```
+The output is saved in a file called compilers.yaml (the path of this file is printed out by spack when you use the command above). Check the list of compilers. There should be at least one version of gcc that has paths for both gcc (cc) and g++ (cxx) compilers. Copy the entire section of the gcc compiler that has all the paths specified and paste it in the spack.yaml file (replacing what is already there). If your spack.yaml file did not have any compiler section, then just paste it at the bottom of the file. The spack.yaml file should look something like this:   
+```
+# This is a Spack Environment file.
+# It describes a set of packages to be installed, along with
+# configuration settings.
+spack:
+  # add package specs to the `specs` list
+  specs: [geos, py-pip, compss]
+  view: true
+  concretization: together
+  compilers:
+  - compiler:
+      paths:
+        cc: /usr/bin/gcc
+        cxx: /usr/bin/g++
+        f77: /usr/bin/gfortran
+        fc: /usr/bin/gfortran
+      operating_system: centos7
+      target: x86_64
+      modules: []
+      environment: {}
+      extra_rpaths: []
+      flags: {}
+      spec: gcc@4.8.5
+```
+
 ### **Updating the version of COMPSs**
 If a new version of COMPSs is released (note that the tag of the version might stay the same, e.g., 3.2, but the sha256 changes) and you want to update it in your spack environment, you need to follow these steps:   
 
