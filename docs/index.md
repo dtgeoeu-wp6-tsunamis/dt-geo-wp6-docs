@@ -18,7 +18,7 @@ In this documentation you will find:
 
 ### **Tsunami HySEA**
 - [Running Tsunami HySEA on Leonardo](Tsunami-HySEA/leonardo.md)
-- [Running Tsunami HySEA inside a docker container](Tsunami-HySEA/docker.md) (work in progress)
+- [Running Tsunami HySEA inside a singularity container](Tsunami-HySEA/container.md) (work in progress)
 - [Tsunami HySEA - Troubleshooting](Tsunami-HySEA/troubleshooting.md) (work in progress)
 
 
