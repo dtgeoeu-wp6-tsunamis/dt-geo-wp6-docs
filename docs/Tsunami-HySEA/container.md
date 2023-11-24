@@ -10,7 +10,7 @@ The singularity image of HySEA was created with the eFlows4HPC image service cre
 
 Alternatively, the image can be found on Leonardo in the shared directory `/leonardo_work/DTGEO_T1_2/images` with the name `dt-geo_t-hysea_x86_64_openmpi_4.1.4_cuda_11.8_v_dt-geo.sif`.   
 
-Note that this image was created with specific version of openmpi (4.1.4) and cuda (11.8) to match what is available on Leonardo. If you want to use different versions or use the image in a HPC cluster with a different architecture, then you need to create a new image.    
+Note that this image was created with specific versions of openmpi (4.1.4) and cuda (11.8) to match what is available on Leonardo. If you want to use different versions or use the image in a HPC cluster with a different architecture, then you need to create a new image.    
 
 ## **2. Create and activate the Spack environment**   
  Now we need to create a Spack environment with openmpi@4.1.4 and cuda@11.8. If you already have created a Spack environment to run HysEA on Leonardo outside a container, then you can simply activate that environment and move to the next point. If you don't have a Spack environment yet, you can either use an existing one, following the instructions in section 1 [here](leonardo.md) or create a new one.    
@@ -72,7 +72,7 @@ mpirun singularity exec --nv --no-home --bind <FULLPATH-TO-ROOT-OF>/testruns_hys
 
  **Run 4 simulations**    
  To run more than one simulation we use the files inside `Step2_BS`. Here there are 4 directories, each of them contains all the input files needed by HySEA. Note that in this example the grid created by `get_load_balancing` is already there.   
- Open the the file `runHySEA_singularity.sh` and follow the instructions at the bottom of the file to ask for 4 GPUs instead of one and to use the right `mpirun singularity exec ...` call that mounts the Step2_BS directory.   
+ Open the file `runHySEA_singularity.sh` and follow the instructions at the bottom of the file to ask for 4 GPUs instead of one and to use the right `mpirun singularity exec ...` call that mounts the Step2_BS directory.   
 
  Then submit the job to the queue:
  ```
@@ -81,3 +81,6 @@ mpirun singularity exec --nv --no-home --bind <FULLPATH-TO-ROOT-OF>/testruns_hys
 
  When the job is done, you should be able to see a file called `out_ts.nc` inside each subdirectory in `Step2_BS`.
 
+
+## **Problems?**
+Check our [troubleshooting guide](troubleshooting.md).

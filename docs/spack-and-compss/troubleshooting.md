@@ -1,4 +1,4 @@
-# **Troubleshooting**
+# **Troubleshooting - Spack + COMPSs**
 
 ### **COMPSs installation fails**
 This can be something related to the sha256. Check the log of the spack install command. If you ran it with the -d flag, you should be able to see an error that says that the sha256 has changed and it says which sha256 you should use now. If this is the case, you can copy that long combination of numbers and letters and paste it inside the file `/<FULLPATH-TO-SPACK-COMPSS-REPO>/var/spack/repos/builtin/packages/compss/package.py`. Then try `spack install` again.
