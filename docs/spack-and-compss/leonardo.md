@@ -66,7 +66,7 @@ export PYTHONPATH=$PYTHONPATH:/mycode:/mycode/py
 ```
 
 ## **3. Configure COMPSs for Leonardo**
-Now we need to tell COMPSs which submission scripts to use that are specific for Leonardo. This is defined by the two files g100.cfg and slurm.cfg, which we need to copy in the COMPSs folders of our Spack environment:
+Now we need to tell COMPSs which submission scripts to use that are specific for Leonardo. This is defined by the two files leonardo.cfg and slurm.cfg, which we need to copy in the COMPSs folders of our Spack environment:
 ```
 cp leonardo/leonardo.cfg /<FULLPATH-TO-REPOSITORY-ROOT>/spack-compss/leonardo/spackenv/.spack-env/view/compss/Runtime/scripts/queues/supercomputers/default.cfg   
 cp leonardo/slurm.cfg /<FULLPATH-TO-REPOSITORY-ROOT>/spack-compss/leonardo/spackenv/.spack-env/view/compss/Runtime/scripts/queues/queue_systems/

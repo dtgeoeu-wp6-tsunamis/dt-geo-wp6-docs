@@ -2,7 +2,7 @@
 These instructions describe how to set up a Spack environment that includes COMPSs and py-pip, and how to run a pyCOMPSs script on Mercalli.
 
 ???+ warning
-    STILL WORK IN PROGRESS: no configuration files and job submission script yet!
+    WORK IN PROGRESS: it works for queues with cpus, but not for the queue with gpus.
 
 ???+ info
     To know more about Spack and COMPSs:    
@@ -39,7 +39,7 @@ cp -r spack-dt-geo/var/spack/repos/builtin/packages/compss /<PATH-TO-SPACK-ROOT>
 
 4. Create and activate the Spack environment:
 ```
-cd spackenv
+cd mercalli/spackenv
 spack env create -d .
 spack env activate -p .
 ```
@@ -78,19 +78,30 @@ export PYTHONPATH=$PYTHONPATH:/mycode:/mycode/py
 ```   
 
 ## **3. Configure COMPSs for Mercalli**
-WORK IN PROGRESS   
+Now we need to tell COMPSs which submission scripts to use that are specific for Mercalli. This is defined by the two files mercalli_cpu.cfg and pbs_mercalli.cfg, which we need to copy in the COMPSs folders of our Spack environment:
+```
+cp mercalli/mercalli_cpu.cfg /<FULLPATH-TO-REPOSITORY-ROOT>/spack-compss/mercalli/spackenv/.spack-env/view/compss/Runtime/scripts/queues/supercomputers/   
+cp mercalli/pbs_mercalli.cfg /<FULLPATH-TO-REPOSITORY-ROOT>/spack-compss/mercalli/spackenv/.spack-env/view/compss/Runtime/scripts/queues/queue_systems/
+```   
+???+ warning
+    At the moment, this works only if you run the job in the queues on Mercalli with CPUs (not for the GPUs queue).
 
 ## **4. Submit a job on Mercalli with enqueue_compss**
-WORK IN PROGRESS      
-The file `run_compss_mercalli.sh` in the directory `mercalli/` is an example of how to submit a job on Mercalli with enqueue_compss. It is important to give the python_interpreter and pythonpath flags to make sure that compss uses the version of python inside the spack environment and that it knows the PYTHONPATH. 
+WORK IN PROGRESS FOR GPU QUEUE   
 
-1. Copy the example script to the directory you want to run the script from:
+The file `run_compss_mercalli_cpu.sh` in the directory `mercalli/` is an example of how to submit a job on Mercalli with enqueue_compss.        
+The file `myenv.sh` is used by compss to set the right environment variables in the computing nodes. In particular, JAVA_HOME needs to be specified there. The path to this file is then passed as a flag to enqueue_compss when we submit the job to the queue.   
+
+1. Copy the example scripts to the directory you want to run the script from:
 ```
-cp mercalli/run_compss_mercalli.sh /<PATH-TO-DIR-FOR-LAUNCHING-JOB>/run_compss.sh
+cp mercalli/run_compss_mercalli_cpu.sh /<PATH-TO-DIR-FOR-LAUNCHING-JOB>/run_compss.sh
+cp mercalli/myenv.sh /<PATH-TO-DIR-FOR-LAUNCHING-JOB>/
 ```   
-2. Open the file `run_compss.sh` and change the paths and name of the script to run.
+2. Open the file `run_compss.sh` and change the paths (where you find 'fullpath') and name of the script to run. Some of the flags here are optional, but they might be useful. However, it is important to give the python_interpreter and pythonpath flags to make sure that compss uses the version of python inside the spack environment and that it knows the PYTHONPATH. And it is important to use the flag `--env_script` give the path to `myenv.sh`.      
 
-3. Submit the job with the **spack environment active**:
+3. Open the file `myenv.sh` and set the right paths, especially for the variable JAVA_HOME.    
+
+4. Submit the job with the **spack environment active**:
 ```
 cd /<PATH-TO-DIR-FOR-LAUNCHING-JOB>/
 ./run_compss.sh
