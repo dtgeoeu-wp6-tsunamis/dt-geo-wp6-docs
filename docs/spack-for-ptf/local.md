@@ -49,7 +49,7 @@ Download the file [requirements.txt](requirements.txt){:download} and type the f
 pip install -r requirements.txt
 ```
 
-A requirements file with specific versions of each python package installed with python 3.11.4 can be downloaded [here](requirements_versions.txt){:download}.   
+A requirements file with specific versions of each python package installed with python 3.9.15 can be downloaded [here](requirements_versions.txt){:download}.   
 
 Note that to install the python pacakge cartopy, GEOS needs to be installed as well. This is not a python package and it is possible that it is already installed locally. If so, then you do not need to do anything and the installation of cartopy should work. If, on the other hand, GEOS is not installed, then the installation of cartopy will fail. In this case, you can add GEOS as a spack package: ```spack add geos```, then ```spack install``` 
 

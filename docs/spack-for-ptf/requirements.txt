@@ -17,4 +17,5 @@ numba
 python-util
 fabric
 cartopy
-emcee
+pika
+pandas
