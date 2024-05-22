@@ -14,7 +14,7 @@ In this documentation you will find:
 - [Spack and COMPSs - Troubleshooting](spack-and-compss/troubleshooting.md)
 
 ### **Spack for PTF**
-- [Create a Spack environment to run the PTF on your local machine](spack-for-ptf/local.md)
+- [Create a Spack environment to run the PTF](spack-for-ptf/local.md)
 
 ### **Tsunami HySEA**
 - [Running Tsunami HySEA on Leonardo](Tsunami-HySEA/leonardo.md)
