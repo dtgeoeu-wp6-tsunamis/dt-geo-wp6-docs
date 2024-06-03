@@ -21,4 +21,5 @@ In this documentation you will find:
 - [Running Tsunami HySEA inside a singularity container](Tsunami-HySEA/container.md)
 - [Tsunami HySEA - Troubleshooting](Tsunami-HySEA/troubleshooting.md)
 
-
+### **WP6 GitHub**
+- [Upload and use docker images on GitHub WP6 page](WP6-github/upload_packages.md)
