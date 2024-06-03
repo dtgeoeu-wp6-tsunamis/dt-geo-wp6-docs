@@ -1,0 +1,860 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Instructions for the tools and codes used by DT-GEO WP6 Tsunamis">
+      
+      
+        <meta name="author" content="Sunniva Indrehus">
+      
+      
+        <link rel="canonical" href="https://dtgeoeu-wp6-tsunamis.github.io/dt-geo-wp6-docs/Tsunami-HySEA/container/">
+      
+      
+        <link rel="prev" href="../leonardo/">
+      
+      
+        <link rel="next" href="../troubleshooting/">
+      
+      <link rel="icon" href="../../images/logo-dt-geo-wp6.png">
+      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.15">
+    
+    
+      
+        <title>HySEA singularity image - DT-GEO WP6 Tsunamis documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.26e3688c.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ecc896b0.min.css">
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="deep-orange">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#running-tsunami-hysea-inside-a-singularity-container-on-leonardo" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+        <aside class="md-banner">
+          <div class="md-banner__inner md-grid md-typeset">
+            
+              <button class="md-banner__button md-icon" aria-label="Don't show this again">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+              </button>
+            
+            
+If you have questions related to the content on this page file 
+<a href="https://github.com/dtgeoeu-wp6-tsunamis/dt-geo-wp6-docs/issues/new/choose" style="color: yellow;"> an issue </a>
+to describe your problem
+!
+
+          </div>
+          
+            <script>var content,el=document.querySelector("[data-md-component=announce]");el&&(content=el.querySelector(".md-typeset"),__md_hash(content.innerHTML)===__md_get("__announce")&&(el.hidden=!0))</script>
+          
+        </aside>
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="DT-GEO WP6 Tsunamis documentation" class="md-header__button md-logo" aria-label="DT-GEO WP6 Tsunamis documentation" data-md-component="logo">
+      
+  <img src="../../images/logo-dt-geo-wp6.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            DT-GEO WP6 Tsunamis documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              HySEA singularity image
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7 0-.24-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91 1.61 0 2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08Z"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/dtgeoeu-wp6-tsunamis/dt-geo-wp6-docs" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    dtgeoeu-wp6-tsunamis/dt-geo-wp6-docs
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="DT-GEO WP6 Tsunamis documentation" class="md-nav__button md-logo" aria-label="DT-GEO WP6 Tsunamis documentation" data-md-component="logo">
+      
+  <img src="../../images/logo-dt-geo-wp6.png" alt="logo">
+
+    </a>
+    DT-GEO WP6 Tsunamis documentation
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/dtgeoeu-wp6-tsunamis/dt-geo-wp6-docs" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    dtgeoeu-wp6-tsunamis/dt-geo-wp6-docs
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Main page
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+          Spack and COMPSs
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Spack and COMPSs
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../spack-and-compss/local/" class="md-nav__link">
+        Local
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../spack-and-compss/galileo/" class="md-nav__link">
+        Galileo
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../spack-and-compss/leonardo/" class="md-nav__link">
+        Leonardo
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../spack-and-compss/mercalli/" class="md-nav__link">
+        Mercalli
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../spack-and-compss/cheat-sheet/" class="md-nav__link">
+        Cheat-sheet
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../spack-and-compss/troubleshooting/" class="md-nav__link">
+        Troubleshooting
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+      
+      
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+          Spack for PTF
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Spack for PTF
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../spack-for-ptf/local/" class="md-nav__link">
+        Local
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+      
+      
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+          Tsunami HySEA
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Tsunami HySEA
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../leonardo/" class="md-nav__link">
+        HySEA on Leonardo
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          HySEA singularity image
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        HySEA singularity image
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-get-the-singularity-image-of-hysea" class="md-nav__link">
+    1. Get the singularity image of HySEA
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-create-and-activate-the-spack-environment" class="md-nav__link">
+    2. Create and activate the Spack environment
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-run-hysea-inside-the-singularity-container" class="md-nav__link">
+    3. Run HySEA inside the singularity container
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#problems" class="md-nav__link">
+    Problems?
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../troubleshooting/" class="md-nav__link">
+        Troubleshooting
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+      
+      
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+          WP6 GitHub
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          WP6 GitHub
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../WP6-github/upload_packages/" class="md-nav__link">
+        Upload docker images
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-get-the-singularity-image-of-hysea" class="md-nav__link">
+    1. Get the singularity image of HySEA
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-create-and-activate-the-spack-environment" class="md-nav__link">
+    2. Create and activate the Spack environment
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-run-hysea-inside-the-singularity-container" class="md-nav__link">
+    3. Run HySEA inside the singularity container
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#problems" class="md-nav__link">
+    Problems?
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="running-tsunami-hysea-inside-a-singularity-container-on-leonardo"><strong>Running Tsunami HySEA inside a singularity container on Leonardo</strong></h1>
+<p>These instructions describe how to run Tsunami HySEA simulations inside a singularity container on Leonardo.   </p>
+<p>To run Tsunami HySEA inside a singularity container on Leonardo, you need: <br />
+1. The singularity image of HySEA and <br />
+2. A Spack environment with the same versions of openmpi and cuda used in the image   </p>
+<h2 id="1-get-the-singularity-image-of-hysea"><strong>1. Get the singularity image of HySEA</strong></h2>
+<p>The singularity image of HySEA was created with the eFlows4HPC image service creation and can downloaded from their <a href="https://eflows4hpc.bsc.es/image_creation/home">website</a>, if you have an account.   </p>
+<p>Alternatively, the image can be found on Leonardo in the shared directory <code>/leonardo_work/DTGEO_T1_2/images</code> with the name <code>dt-geo_t-hysea_x86_64_openmpi_4.1.4_cuda_11.8_v_dt-geo.sif</code>.   </p>
+<p>Note that this image was created with specific versions of openmpi (4.1.4) and cuda (11.8) to match what is available on Leonardo. If you want to use different versions or use the image in a HPC cluster with a different architecture, then you need to create a new image.    </p>
+<h2 id="2-create-and-activate-the-spack-environment"><strong>2. Create and activate the Spack environment</strong></h2>
+<p>Now we need to create a Spack environment with openmpi@4.1.4 and cuda@11.8. If you already have created a Spack environment to run HysEA on Leonardo outside a container, then you can simply activate that environment and move to the next point. If you don't have a Spack environment yet, you can either use an existing one, following the instructions in section 1 <a href="../leonardo/">here</a> or create a new one.    </p>
+<p>To create a new Spack environment: <br />
+ <div class="highlight"><pre><span></span><code>module load spack
+mkdir envhysea
+cd envhysea
+spack env create -d .
+spack env activate -p .
+spack add openmpi@4.1.4+cuda
+spack concretize
+spack -d install
+</code></pre></div>
+ This will install openmpi, cuda, and other packages that have dependencies with openmpi. You can see the installed modules with the command <code>spack find</code>. At the moment of writing, the version of cuda installed with this method is 11.8 (cuda@11.8.89 in the output of <code>spack find</code>). If the version is different, then you have to specify the version of cuda you want to use (11.8) when creating the spack environment to fit the one that is installed in the singularity image.  </p>
+<p>Now you have a spack environment that you can activate any time you want with the command <code>spack env activate -p .</code>.      </p>
+<details class="info" open="open">
+<summary>Info</summary>
+<p><a href="../../spack-and-compss/cheat-sheet/">Here</a> you can find some useful Spack commands.  </p>
+</details>
+<h2 id="3-run-hysea-inside-the-singularity-container"><strong>3. Run HySEA inside the singularity container</strong></h2>
+<p><strong>Spack environment</strong> <br />
+ Any time you want to run HySEA you need to activate the environment envhysea and load the openmpi module (which should automatically load also cuda).  <br />
+ <div class="highlight"><pre><span></span><code>module load spack
+spack env activate -p PATH-TO/envhysea
+spack load openmpi
+</code></pre></div>
+ <strong>Singularity</strong> <br />
+ To run HySEA inside a container we want to use SingularityPRO. <br />
+ On Leonardo, both SingularityPRO and the normal version of Singularity are available. SingularityPRO is already installed in the system, so no action is needed to be able to use it, whereas the normal version of Singularity can be loaded as a module (<code>module load singularity</code>). <br />
+ The benefit of using SingularityPRO instead of the normal Singularity is that SingularityPRO does not need a lot of memory to create the container from the image. Because the image we have of HySEA is quite large (&gt;8GB), when using the normal version of Singularity, you would need to reserve an entire node when submitting the job, even though you might want to use only 1 GPU inside that node. Therefore, it is better, and faster, to use SingularityPRO. <br />
+ If you type <code>singularity --version</code> you should see this output <code>SingularityPRO version 3.9-9.el8</code>.    </p>
+<p><strong>Copy test folder</strong> <br />
+ Copy the directory <code>/leonardo_work/DTGEO_T1_2/testruns_hysea</code> into your home directory. Here you can find input files for HySEA and shell scripts to run some tests. </p>
+<p><strong>Set the right paths</strong> <br />
+ Open the file <code>runHySEA_singularity.sh</code> and write the full path to the testruns_hysea directory in this line: <br />
+<div class="highlight"><pre><span></span><code>mpirun singularity exec --nv --no-home --bind &lt;FULLPATH-TO-ROOT-OF&gt;/testruns_hysea:/testruns_hysea /leonardo_work/DTGEO_T1_2/images/dt-geo_t-hysea_x86_64_openmpi_4.1.4_cuda_11.8_v_dt-geo.sif testruns_hysea/run-inside-container.sh
+</code></pre></div>
+ Do not change the path after the colon symbol (:/testruns_hysea) as this is the path used inside the container.   </p>
+<p><strong>Run 1 simulation</strong>  <br />
+ The first example is to run one simulation inside the singularity container. The input files for this simulation are inside the directory <code>BS_Scenario0001</code>.   </p>
+<p>To run the simulation, make sure you stand in the directory where the file <code>runHySEA_singularity.sh</code> is and have the <strong>spack environment active</strong>, then submit the job to the queue:
+ <div class="highlight"><pre><span></span><code>sbatch runHySEA_singularity.sh
+</code></pre></div>
+ What this script does is launching the command <code>mpirun singularity exec ... run-inside-container.sh</code>. This command executes the script run-inside-container.sh inside the container. This is where the commands <code>get_load_balancing</code> to create the grid and <code>TsunamiHySEA</code> are called.       <br />
+ The <code>--nv</code> flag is necessary because we want to use GPUs. The <code>--bind</code> flag is to mount the folder needed to run the simulation inside the container.    </p>
+<p>When the job is done, you should be able to see a file called <code>out_ts.nc</code> inside <code>BS_Scenario0001</code>.    </p>
+<p><strong>Run 4 simulations</strong>  <br />
+ To run more than one simulation we use the files inside <code>Step2_BS</code>. Here there are 4 directories, each of them contains all the input files needed by HySEA. Note that in this example the grid created by <code>get_load_balancing</code> is already there. <br />
+ Open the file <code>runHySEA_singularity.sh</code> and follow the instructions at the bottom of the file to ask for 4 GPUs instead of one and to use the right <code>mpirun singularity exec ...</code> call that mounts the Step2_BS directory.   </p>
+<p>Then submit the job to the queue:
+ <div class="highlight"><pre><span></span><code>sbatch runHySEA_singularity.sh
+</code></pre></div></p>
+<p>When the job is done, you should be able to see a file called <code>out_ts.nc</code> inside each subdirectory in <code>Step2_BS</code>.</p>
+<h2 id="problems"><strong>Problems?</strong></h2>
+<p>Check our <a href="../troubleshooting/">troubleshooting guide</a>.</p>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../leonardo/" class="md-footer__link md-footer__link--prev" aria-label="Previous: HySEA on Leonardo" rel="prev">
+            <div class="md-footer__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                HySEA on Leonardo
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../troubleshooting/" class="md-footer__link md-footer__link--next" aria-label="Next: Troubleshooting" rel="next">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Troubleshooting
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["search.suggest", "search.highlight", "search.share", "navigation.footer", "navigation.indexes", "content.code.copy", "content.code.annotate", "announce.dismiss", "header.autohide"], "search": "../../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.b4d07000.min.js"></script>
+      
+    
+  </body>
+</html>

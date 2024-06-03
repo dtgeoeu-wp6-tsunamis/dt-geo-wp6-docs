@@ -1,0 +1,896 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Instructions for the tools and codes used by DT-GEO WP6 Tsunamis">
+      
+      
+        <meta name="author" content="Sunniva Indrehus">
+      
+      
+        <link rel="canonical" href="https://dtgeoeu-wp6-tsunamis.github.io/dt-geo-wp6-docs/spack-and-compss/troubleshooting/">
+      
+      
+        <link rel="prev" href="../cheat-sheet/">
+      
+      
+        <link rel="next" href="../../spack-for-ptf/local/">
+      
+      <link rel="icon" href="../../images/logo-dt-geo-wp6.png">
+      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.15">
+    
+    
+      
+        <title>Troubleshooting - DT-GEO WP6 Tsunamis documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.26e3688c.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ecc896b0.min.css">
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="deep-orange">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#troubleshooting-spack-compss" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+        <aside class="md-banner">
+          <div class="md-banner__inner md-grid md-typeset">
+            
+              <button class="md-banner__button md-icon" aria-label="Don't show this again">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+              </button>
+            
+            
+If you have questions related to the content on this page file 
+<a href="https://github.com/dtgeoeu-wp6-tsunamis/dt-geo-wp6-docs/issues/new/choose" style="color: yellow;"> an issue </a>
+to describe your problem
+!
+
+          </div>
+          
+            <script>var content,el=document.querySelector("[data-md-component=announce]");el&&(content=el.querySelector(".md-typeset"),__md_hash(content.innerHTML)===__md_get("__announce")&&(el.hidden=!0))</script>
+          
+        </aside>
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="DT-GEO WP6 Tsunamis documentation" class="md-header__button md-logo" aria-label="DT-GEO WP6 Tsunamis documentation" data-md-component="logo">
+      
+  <img src="../../images/logo-dt-geo-wp6.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            DT-GEO WP6 Tsunamis documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Troubleshooting
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7 0-.24-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91 1.61 0 2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08Z"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/dtgeoeu-wp6-tsunamis/dt-geo-wp6-docs" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    dtgeoeu-wp6-tsunamis/dt-geo-wp6-docs
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="DT-GEO WP6 Tsunamis documentation" class="md-nav__button md-logo" aria-label="DT-GEO WP6 Tsunamis documentation" data-md-component="logo">
+      
+  <img src="../../images/logo-dt-geo-wp6.png" alt="logo">
+
+    </a>
+    DT-GEO WP6 Tsunamis documentation
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/dtgeoeu-wp6-tsunamis/dt-geo-wp6-docs" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    dtgeoeu-wp6-tsunamis/dt-geo-wp6-docs
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Main page
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+          Spack and COMPSs
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Spack and COMPSs
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../local/" class="md-nav__link">
+        Local
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../galileo/" class="md-nav__link">
+        Galileo
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../leonardo/" class="md-nav__link">
+        Leonardo
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mercalli/" class="md-nav__link">
+        Mercalli
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cheat-sheet/" class="md-nav__link">
+        Cheat-sheet
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Troubleshooting
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Troubleshooting
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#compss-installation-fails" class="md-nav__link">
+    COMPSs installation fails
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#module-not-found-when-running-a-python-script-with-compss" class="md-nav__link">
+    Module not found when running a python script with COMPSs
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#problem-with-geos-cannot-find-libraries" class="md-nav__link">
+    Problem with geos (cannot find libraries)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#job-submission-on-galileo-fails" class="md-nav__link">
+    Job submission on Galileo fails
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installation-of-spack-environment-fails-problem-with-compilers" class="md-nav__link">
+    Installation of Spack environment fails - Problem with compilers
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#updating-the-version-of-compss" class="md-nav__link">
+    Updating the version of COMPSs
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+      
+      
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+          Spack for PTF
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Spack for PTF
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../spack-for-ptf/local/" class="md-nav__link">
+        Local
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+      
+      
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+          Tsunami HySEA
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Tsunami HySEA
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Tsunami-HySEA/leonardo/" class="md-nav__link">
+        HySEA on Leonardo
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Tsunami-HySEA/container/" class="md-nav__link">
+        HySEA singularity image
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Tsunami-HySEA/troubleshooting/" class="md-nav__link">
+        Troubleshooting
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+      
+      
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+          WP6 GitHub
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          WP6 GitHub
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../WP6-github/upload_packages/" class="md-nav__link">
+        Upload docker images
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#compss-installation-fails" class="md-nav__link">
+    COMPSs installation fails
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#module-not-found-when-running-a-python-script-with-compss" class="md-nav__link">
+    Module not found when running a python script with COMPSs
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#problem-with-geos-cannot-find-libraries" class="md-nav__link">
+    Problem with geos (cannot find libraries)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#job-submission-on-galileo-fails" class="md-nav__link">
+    Job submission on Galileo fails
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installation-of-spack-environment-fails-problem-with-compilers" class="md-nav__link">
+    Installation of Spack environment fails - Problem with compilers
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#updating-the-version-of-compss" class="md-nav__link">
+    Updating the version of COMPSs
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="troubleshooting-spack-compss"><strong>Troubleshooting - Spack + COMPSs</strong></h1>
+<h3 id="compss-installation-fails"><strong>COMPSs installation fails</strong></h3>
+<p>This can be something related to the sha256. Check the log of the spack install command. If you ran it with the -d flag, you should be able to see an error that says that the sha256 has changed and it says which sha256 you should use now. If this is the case, you can copy that long combination of numbers and letters and paste it inside the file <code>/&lt;FULLPATH-TO-SPACK-COMPSS-REPO&gt;/var/spack/repos/builtin/packages/compss/package.py</code>. Then try <code>spack install</code> again.</p>
+<h3 id="module-not-found-when-running-a-python-script-with-compss"><strong>Module not found when running a python script with COMPSs</strong></h3>
+<p>This could be related to pyCOMPSs not knowing where to look for the python routines defined bynthe user. Make sure you set up the variable $PYTHONPATH correctly. For instance, if you have a folder /mycode/py/ with some routines that the main script needs to use, you need to change the PYTHONPATH to (make sure you write the full paths):
+<div class="highlight"><pre><span></span><code>export PYTHONPATH=$PYTHONPATH:/mycode:/mycode/py
+</code></pre></div>
+If you are running a job on a cluster with the command <code>enqueue_compss</code>,  make sure you specify the PYTHONPATH with the flag --pythonpath</p>
+<h3 id="problem-with-geos-cannot-find-libraries"><strong>Problem with geos (cannot find libraries)</strong></h3>
+<p>This error is specific for running the PTF. Even though geos is installed as a package in the spack environment, in some cases, it seems that python does not see it. Try <code>spack load geos</code> and run the PTF again.   </p>
+<h3 id="job-submission-on-galileo-fails"><strong>Job submission on Galileo fails</strong></h3>
+<p>If the job submission fails and you get this error: <br />
+<code>/.../spackptf/.spack-env/view/compss/Runtime/scripts/queues/commons/submit.sh: line 19: bsub: command not found
+cat: /scratch_local/tmp.VJR55zlrin.err: No such file or directory   
+Error submiting script to queue system</code> <br />
+This is related to COMPSs using the wrong commands to submit a job to the queue in Galielo. Make sure you have copied the right configuration files specific for Galileo in the spack environment COMPSs folder, as described <a href="../galileo/">here</a>.    </p>
+<h3 id="installation-of-spack-environment-fails-problem-with-compilers"><strong>Installation of Spack environment fails - Problem with compilers</strong></h3>
+<p>If the installation of a spack environment fails, it can be because spack is using a version of the C compilers that have only gcc, but not g++. The error message would read something like <em>"Checking whether the C++ compiler supports templates ... configure: error: no"</em>. <br />
+Open the spack.yaml file of the environment where the installation failed. There should be a section that Spack created called "compilers". Check what version of gcc is listed. If there is no path specified for some of the compilers (e.g., cxx), then you need to use a different version of gcc.</p>
+<p>In this case you can force spack to use the version of the compiler that has both gcc and g++. You can check what compilers you have available with the command
+<div class="highlight"><pre><span></span><code>spack compiler find
+</code></pre></div>
+The output is saved in a file called compilers.yaml (the path of this file is printed out by spack when you use the command above). Check the list of compilers. There should be at least one version of gcc that has paths for both gcc (cc) and g++ (cxx) compilers. Copy the entire section of the gcc compiler that has all the paths specified and paste it in the spack.yaml file (replacing what is already there). If your spack.yaml file did not have any compiler section, then just paste it at the bottom of the file. The spack.yaml file should look something like this: <br />
+<div class="highlight"><pre><span></span><code># This is a Spack Environment file.
+# It describes a set of packages to be installed, along with
+# configuration settings.
+spack:
+  # add package specs to the `specs` list
+  specs: [geos, py-pip, compss]
+  view: true
+  concretization: together
+  compilers:
+  - compiler:
+      paths:
+        cc: /usr/bin/gcc
+        cxx: /usr/bin/g++
+        f77: /usr/bin/gfortran
+        fc: /usr/bin/gfortran
+      operating_system: centos7
+      target: x86_64
+      modules: []
+      environment: {}
+      extra_rpaths: []
+      flags: {}
+      spec: gcc@4.8.5
+</code></pre></div></p>
+<h3 id="updating-the-version-of-compss"><strong>Updating the version of COMPSs</strong></h3>
+<p>If a new version of COMPSs is released (note that the tag of the version might stay the same, e.g., 3.2, but the sha256 changes) and you want to update it in your spack environment, you need to follow these steps:   </p>
+<ul>
+<li>
+<p>Inside your spack environemnt, uninstall compss <br />
+<div class="highlight"><pre><span></span><code>spack uninstall compss
+</code></pre></div></p>
+</li>
+<li>
+<p>Clean the cache. This is needed otherwise spack will not fetch a new version of COMPSs because it sees that it has a version with the same tag (e.g., 3.2) in the cache <br />
+<div class="highlight"><pre><span></span><code>spack clean -m   
+</code></pre></div></p>
+</li>
+<li>
+<p>If you alread know the new sha256, then update it in the package.py file as exaplined <a href="#compss-installation-fails">here</a>. If not, you should still follow the next steps, from which you will get an error message during the spack install that will give you the new sha256.   </p>
+</li>
+<li>Re-install compss and update the environment <br />
+<div class="highlight"><pre><span></span><code>spack add compss   
+spack concretize   
+spack -d install
+</code></pre></div></li>
+</ul>
+<p>It might be necessary to deactivate the environment and activate it again, before using it. <br />
+If you had some python pacakages installed with py-pip, it might also be necessary to re-install them. You can check with <code>pip list</code> if they are sill there or not. <br />
+If you are using Spack+COMPSs on a supercomputer, now that a new version of COMPSs is installed, the configuration files for running jobs with COMPSs are back to being the default ones and not anymore the ones specific for that supercomputer (e.g. Galileo). Therefore, you need to copy the configuration files again following the instructions <a href="../galileo/">here</a></p>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../cheat-sheet/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Cheat-sheet" rel="prev">
+            <div class="md-footer__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Cheat-sheet
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../../spack-for-ptf/local/" class="md-footer__link md-footer__link--next" aria-label="Next: Local" rel="next">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Local
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["search.suggest", "search.highlight", "search.share", "navigation.footer", "navigation.indexes", "content.code.copy", "content.code.annotate", "announce.dismiss", "header.autohide"], "search": "../../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.b4d07000.min.js"></script>
+      
+    
+  </body>
+</html>
